@@ -15,7 +15,6 @@
             <li><RouterLink to="/themes" class="nav-link" active-class="active">探索主题</RouterLink></li>
             <li><RouterLink to="/checkin" class="nav-link" active-class="active">打卡中心</RouterLink></li>
             <li><RouterLink to="/planner" class="nav-link" active-class="active">规划工具</RouterLink></li>
-            <li><RouterLink to="/inspiration" class="nav-link" active-class="active">灵感库</RouterLink></li>
           </ul>
         </nav>
         
@@ -49,7 +48,6 @@
         <li><RouterLink to="/themes" class="mobile-nav-link" @click="closeMobileMenu">探索主题</RouterLink></li>
         <li><RouterLink to="/checkin" class="mobile-nav-link" @click="closeMobileMenu">打卡中心</RouterLink></li>
         <li><RouterLink to="/planner" class="mobile-nav-link" @click="closeMobileMenu">规划工具</RouterLink></li>
-        <li><RouterLink to="/inspiration" class="mobile-nav-link" @click="closeMobileMenu">灵感库</RouterLink></li>
         <li v-if="!userStore.isAuthenticated">
           <RouterLink to="/login" class="mobile-nav-link" @click="closeMobileMenu">登录</RouterLink>
         </li>

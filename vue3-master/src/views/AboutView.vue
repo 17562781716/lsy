@@ -42,11 +42,6 @@
             <p class="feature-desc">自定义你的主题周，设定目标和每日任务</p>
           </div>
           <div class="feature-card">
-            <div class="feature-icon">💡</div>
-            <h3 class="feature-name">灵感库</h3>
-            <p class="feature-desc">获取无限的主题灵感，让生活充满新鲜感</p>
-          </div>
-          <div class="feature-card">
             <div class="feature-icon">💬</div>
             <h3 class="feature-name">感悟墙</h3>
             <p class="feature-desc">分享你的主题周故事，与志同道合的朋友交流</p>
