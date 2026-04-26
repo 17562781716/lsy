@@ -13,6 +13,7 @@
           <ul class="nav-links">
             <li><RouterLink to="/" class="nav-link" exact-active-class="active">首页</RouterLink></li>
             <li><RouterLink to="/themes" class="nav-link" active-class="active">探索主题</RouterLink></li>
+            <li><RouterLink to="/custom-week" class="nav-link" active-class="active">自定义周</RouterLink></li>
             <li><RouterLink to="/checkin" class="nav-link" active-class="active">打卡中心</RouterLink></li>
             <li><RouterLink to="/planner" class="nav-link" active-class="active">规划工具</RouterLink></li>
           </ul>
@@ -46,6 +47,7 @@
       <ul class="mobile-nav-links">
         <li><RouterLink to="/" class="mobile-nav-link" @click="closeMobileMenu">首页</RouterLink></li>
         <li><RouterLink to="/themes" class="mobile-nav-link" @click="closeMobileMenu">探索主题</RouterLink></li>
+        <li><RouterLink to="/custom-week" class="mobile-nav-link" @click="closeMobileMenu">自定义周</RouterLink></li>
         <li><RouterLink to="/checkin" class="mobile-nav-link" @click="closeMobileMenu">打卡中心</RouterLink></li>
         <li><RouterLink to="/planner" class="mobile-nav-link" @click="closeMobileMenu">规划工具</RouterLink></li>
         <li v-if="!userStore.isAuthenticated">

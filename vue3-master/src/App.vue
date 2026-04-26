@@ -36,9 +36,8 @@ onMounted(() => {
             <div class="footer-section">
               <h4 class="footer-title">探索</h4>
               <ul>
-                <li><RouterLink to="/themes">全部主题</RouterLink></li>
-                <li><RouterLink to="/inspiration">灵感库</RouterLink></li>
-                <li><RouterLink to="/insights">感悟墙</RouterLink></li>
+                <li><RouterLink to="/themes">探索主题</RouterLink></li>
+                <li><RouterLink to="/custom-week">自定义周</RouterLink></li>
               </ul>
             </div>
             <div class="footer-section">
@@ -53,8 +52,7 @@ onMounted(() => {
               <h4 class="footer-title">关于</h4>
               <ul>
                 <li><RouterLink to="/about">关于我们</RouterLink></li>
-                <li><a href="#">使用指南</a></li>
-                <li><a href="#">反馈建议</a></li>
+                <li><RouterLink to="/about">使用指南</RouterLink></li>
               </ul>
             </div>
           </div>
@@ -101,7 +99,7 @@ body {
 /* 主内容区 */
 .main-content {
   flex: 1;
-  padding-top: 80px;
+  padding-top: 60px;
 }
 
 /* 页脚样式 */

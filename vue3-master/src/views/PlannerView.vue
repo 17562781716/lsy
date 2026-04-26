@@ -177,7 +177,7 @@ const createWeek = () => {
 
 <style scoped>
 .planner-page {
-  padding: 100px 0 60px;
+  padding: 80px 0 60px;
   min-height: 100vh;
 }
 
