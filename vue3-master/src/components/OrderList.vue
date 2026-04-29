@@ -34,13 +34,7 @@
       </div>
       <div class="filter-group">
         <label for="orderDate">{{ getDateLabel() }}</label>
-        <input 
-          type="date" 
-          id="orderDate" 
-          v-model="filters.date"
-          class="form-input"
-          @change="handleFilterChange"
-        >
+        <CustomDatePicker v-model="filters.date" />
       </div>
     </div>
     
@@ -199,6 +193,7 @@
 import { ref, computed, onMounted, defineProps } from 'vue';
 import { useUserStore } from '../stores/user';
 import { useCartStore } from '../stores/cart';
+import CustomDatePicker from './CustomDatePicker.vue';
 
 const props = defineProps({
   recordType: {

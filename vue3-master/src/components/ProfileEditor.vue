@@ -69,13 +69,7 @@
       <div class="form-row">
         <div class="form-group">
           <label for="birthday">生日</label>
-          <input 
-            type="date" 
-            id="birthday" 
-            v-model="formData.birthday"
-            class="form-input"
-            max="{{ today }}"
-          >
+          <CustomDatePicker v-model="formData.birthday" />
         </div>
         
         <div class="form-group">
@@ -215,6 +209,7 @@
 import { ref, reactive, computed, onMounted, watch } from 'vue';
 import { useUserStore } from '../stores/user';
 import { debounce } from 'lodash-es';
+import CustomDatePicker from './CustomDatePicker.vue';
 
 const userStore = useUserStore();
 const user = computed(() => userStore.user);

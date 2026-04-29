@@ -268,7 +268,7 @@ export const useThemesStore = defineStore('themes', () => {
     // 美育类 (12个)
     {
       id: 25,
-      icon: '🎭',
+      icon: '🎼',
       name: '音乐剧周',
       description: '走进剧场，感受音乐与戏剧的碰撞',
       category: 'aesthetic',
@@ -288,7 +288,7 @@ export const useThemesStore = defineStore('themes', () => {
     },
     {
       id: 27,
-      icon: '🎵',
+      icon: '🎧',
       name: '音乐周',
       description: '聆听不同风格的音乐，感受旋律的力量',
       category: 'aesthetic',
@@ -338,7 +338,7 @@ export const useThemesStore = defineStore('themes', () => {
     },
     {
       id: 32,
-      icon: '🎭',
+      icon: '🎪',
       name: '戏剧周',
       description: '走进戏剧世界，体验不同的人生故事',
       category: 'aesthetic',
@@ -358,7 +358,7 @@ export const useThemesStore = defineStore('themes', () => {
     },
     {
       id: 34,
-      icon: '🎤',
+      icon: '🎵',
       name: '歌唱周',
       description: '用歌声表达情感，享受音乐魅力',
       category: 'aesthetic',
@@ -377,8 +377,8 @@ export const useThemesStore = defineStore('themes', () => {
       ideas: ['学习水彩基础技法', '完成一幅风景画', '尝试湿画法'],
     },
     {
-      id: 36,
-      icon: '🎪',
+      id: 38,
+      icon: '🎭',
       name: '皮影周',
       description: '探索传统皮影艺术，感受非遗魅力',
       category: 'aesthetic',
@@ -542,7 +542,7 @@ export const useThemesStore = defineStore('themes', () => {
     },
     {
       id: 52,
-      icon: '🏮',
+      icon: '🎎',
       name: '民俗周',
       description: '探索民间文化，感受乡土情怀',
       category: 'culture',
@@ -572,7 +572,7 @@ export const useThemesStore = defineStore('themes', () => {
     },
     {
       id: 55,
-      icon: '🎎',
+      icon: '🎭',
       name: '戏曲周',
       description: '欣赏传统戏曲，感受国粹魅力',
       category: 'culture',
@@ -622,7 +622,7 @@ export const useThemesStore = defineStore('themes', () => {
     },
     {
       id: 60,
-      icon: '🎶',
+      icon: '🎵',
       name: '民乐周',
       description: '聆听民族音乐，感受传统韵律',
       category: 'culture',
@@ -644,7 +644,7 @@ export const useThemesStore = defineStore('themes', () => {
     },
     {
       id: 62,
-      icon: '📢',
+      icon: '🎤',
       name: '演讲周',
       description: '提升表达能力，勇敢说出自己的想法',
       category: 'skills',
@@ -1000,7 +1000,7 @@ export const useThemesStore = defineStore('themes', () => {
     // 社交类 (12个)
     {
       id: 97,
-      icon: '🤝',
+      icon: '👋',
       name: '交友周',
       description: '主动认识新朋友，拓展社交圈',
       category: 'social',
@@ -1050,7 +1050,7 @@ export const useThemesStore = defineStore('themes', () => {
     },
     {
       id: 102,
-      icon: '📢',
+      icon: '🤝',
       name: '分享周',
       description: '分享知识与经验，帮助他人成长',
       category: 'social',
@@ -1172,7 +1172,7 @@ export const useThemesStore = defineStore('themes', () => {
     },
     {
       id: 114,
-      icon: '🎶',
+      icon: '🎧',
       name: '歌单周',
       description: '整理心情歌单，用音乐陪伴每一天',
       category: 'life',
@@ -1354,7 +1354,7 @@ export const useThemesStore = defineStore('themes', () => {
     },
     {
       id: 132,
-      icon: '🧮',
+      icon: '🧠',
       name: '脑力训练周',
       description: '锻炼大脑，保持思维敏捷',
       category: 'health',
@@ -1499,6 +1499,7 @@ export const useThemesStore = defineStore('themes', () => {
       statusText: '进行中',
       progress: 60,
       tasks: ['看一场音乐剧', '学一首音乐剧歌曲', '了解音乐剧历史'],
+      dayCheckins: [true, true, true, true, false, false, false],
       checkins: [
         { date: '2026-04-20', content: '今天去看了《歌剧魅影》', mood: 5 },
         { date: '2026-04-21', content: '听了《悲惨世界》原声带', mood: 4 },
@@ -1516,6 +1517,12 @@ export const useThemesStore = defineStore('themes', () => {
       status: 'completed',
       statusText: '已完成',
       progress: 100,
+      dayCheckins: [true, true, true, true, true, true, true],
+      checkins: [
+        { date: '2026-04-13', content: '开始读《百年孤独》', mood: 5 },
+        { date: '2026-04-14', content: '读完了第一章', mood: 4 },
+        { date: '2026-04-15', content: '写了第一篇读书笔记', mood: 5 },
+      ],
       achievements: ['读完《百年孤独》', '写读书笔记3篇'],
     },
     {
@@ -1528,6 +1535,11 @@ export const useThemesStore = defineStore('themes', () => {
       status: 'completed',
       statusText: '已完成',
       progress: 100,
+      dayCheckins: [true, true, true, true, true, true, true],
+      checkins: [
+        { date: '2026-04-06', content: '学会了基础针法', mood: 5 },
+        { date: '2026-04-08', content: '完成了第一个杯垫', mood: 5 },
+      ],
       achievements: ['学会基础针法', '完成杯垫2个'],
     },
   ]);
@@ -1580,15 +1592,110 @@ export const useThemesStore = defineStore('themes', () => {
 
   // 添加我的主题周
   const addMyWeek = (week) => {
+    const start = new Date(week.startDate);
+    const end = new Date(start);
+    end.setDate(end.getDate() + 6);
+    const endDateStr = end.toISOString().split('T')[0];
+
     const newWeek = {
       id: Date.now(),
       ...week,
-      status: 'upcoming',
-      statusText: '即将开始',
+      endDate: endDateStr,
+      status: 'ongoing',
+      statusText: '进行中',
       progress: 0,
       checkins: [],
+      dayCheckins: Array(7).fill(false),
+      taskCompleted: [],
     };
     myWeeks.value.unshift(newWeek);
+    return newWeek;
+  };
+
+  // 获取当前进行中的主题周
+  const getCurrentWeek = computed(() => {
+    return myWeeks.value.find(w => w.status === 'ongoing') || null;
+  });
+
+  // 获取指定主题周
+  const getWeekById = (id) => {
+    return myWeeks.value.find(w => w.id === id) || null;
+  };
+
+  // 切换某天打卡状态
+  const toggleDayCheckin = (weekId, dayIndex, content = '') => {
+    const week = myWeeks.value.find(w => w.id === weekId);
+    if (!week) return;
+
+    const wasChecked = week.dayCheckins[dayIndex];
+    week.dayCheckins[dayIndex] = !wasChecked;
+
+    const start = new Date(week.startDate);
+    const checkDate = new Date(start);
+    checkDate.setDate(checkDate.getDate() + dayIndex);
+    const dateStr = checkDate.toISOString().split('T')[0];
+
+    if (!wasChecked) {
+      // 添加打卡记录
+      week.checkins.unshift({
+        date: dateStr,
+        content: content || `完成第${dayIndex + 1}天打卡`,
+        mood: 5,
+      });
+    } else {
+      // 取消打卡，移除对应记录
+      week.checkins = week.checkins.filter(c => c.date !== dateStr);
+    }
+
+    // 更新进度
+    const checkedCount = week.dayCheckins.filter(Boolean).length;
+    week.progress = Math.round((checkedCount / 7) * 100);
+
+    // 如果7天都完成，标记为已完成
+    if (checkedCount === 7) {
+      week.status = 'completed';
+      week.statusText = '已完成';
+    }
+  };
+
+  // 提交打卡内容
+  const submitCheckinContent = (weekId, dayIndex, content) => {
+    const week = myWeeks.value.find(w => w.id === weekId);
+    if (!week) return;
+
+    const start = new Date(week.startDate);
+    const checkDate = new Date(start);
+    checkDate.setDate(checkDate.getDate() + dayIndex);
+    const dateStr = checkDate.toISOString().split('T')[0];
+
+    const existing = week.checkins.find(c => c.date === dateStr);
+    if (existing) {
+      existing.content = content;
+    } else {
+      week.checkins.unshift({
+        date: dateStr,
+        content,
+        mood: 5,
+      });
+      week.dayCheckins[dayIndex] = true;
+
+      const checkedCount = week.dayCheckins.filter(Boolean).length;
+      week.progress = Math.round((checkedCount / 7) * 100);
+      if (checkedCount === 7) {
+        week.status = 'completed';
+        week.statusText = '已完成';
+      }
+    }
+  };
+
+  // 切换任务完成状态
+  const toggleTask = (weekId, taskIndex) => {
+    const week = myWeeks.value.find(w => w.id === weekId);
+    if (!week) return;
+    if (!week.taskCompleted) {
+      week.taskCompleted = [];
+    }
+    week.taskCompleted[taskIndex] = !week.taskCompleted[taskIndex];
   };
 
   // 添加感悟
@@ -1611,5 +1718,10 @@ export const useThemesStore = defineStore('themes', () => {
     getThemesByCategory,
     addMyWeek,
     addInsight,
+    getCurrentWeek,
+    getWeekById,
+    toggleDayCheckin,
+    submitCheckinContent,
+    toggleTask,
   };
 });

@@ -28,7 +28,6 @@
           <ul class="link-list">
             <li><RouterLink to="/checkin" class="footer-link">打卡中心</RouterLink></li>
             <li><RouterLink to="/planner" class="footer-link">规划工具</RouterLink></li>
-            <li><RouterLink to="/my-weeks" class="footer-link">我的主题周</RouterLink></li>
           </ul>
         </div>
 
