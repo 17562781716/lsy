@@ -25,6 +25,68 @@
         <div class="info-section">
           <h1 class="username">{{ user.name }}</h1>
           <p class="user-phone">{{ user.username }}</p>
+          <div class="user-badge">
+            <span class="badge-icon">🎯</span>
+            <span class="badge-text">Lv.{{ userLevel }} 活跃用户</span>
+          </div>
+        </div>
+
+        <div class="user-stats-mini">
+          <div class="mini-stat">
+            <span class="mini-stat-value">{{ joinDays }}</span>
+            <span class="mini-stat-label">加入天数</span>
+          </div>
+          <div class="mini-stat-divider"></div>
+          <div class="mini-stat">
+            <span class="mini-stat-value">{{ stats.totalCheckins }}</span>
+            <span class="mini-stat-label">累计打卡</span>
+          </div>
+          <div class="mini-stat-divider"></div>
+          <div class="mini-stat">
+            <span class="mini-stat-value">{{ stats.totalHours }}h</span>
+            <span class="mini-stat-label">学习时长</span>
+          </div>
+        </div>
+
+        <div class="user-bio">
+          <textarea 
+            v-model="bio" 
+            placeholder="写点什么介绍自己吧..."
+            @blur="saveBio"
+            rows="2"
+          ></textarea>
+        </div>
+
+        <div class="quick-menu">
+          <RouterLink to="/favorites" class="menu-item">
+            <span class="menu-icon">❤️</span>
+            <span>我的收藏</span>
+            <span class="menu-count">{{ stats.favoriteThemes }}</span>
+          </RouterLink>
+          <RouterLink to="/messages" class="menu-item">
+            <span class="menu-icon">💬</span>
+            <span>我的消息</span>
+            <span class="menu-count new">3条新</span>
+          </RouterLink>
+          <RouterLink to="/history" class="menu-item">
+            <span class="menu-icon">📜</span>
+            <span>浏览记录</span>
+          </RouterLink>
+          <button class="menu-item edit-profile-btn" @click="showEditProfile = true">
+            <span class="menu-icon">✏️</span>
+            <span>编辑资料</span>
+          </button>
+        </div>
+
+        <div class="account-status">
+          <div class="status-item">
+            <span class="status-dot verified"></span>
+            <span>手机已验证</span>
+          </div>
+          <div class="status-item">
+            <span class="status-dot secure"></span>
+            <span>账号安全</span>
+          </div>
         </div>
       </div>
 
@@ -189,6 +251,42 @@
         </div>
       </div>
     </div>
+
+    <div class="edit-profile-modal" v-if="showEditProfile" @click="showEditProfile = false">
+      <div class="modal-content" @click.stop>
+        <div class="modal-header">
+          <h3>编辑资料</h3>
+          <button class="close-btn" @click="showEditProfile = false">×</button>
+        </div>
+        <div class="modal-body">
+          <div class="form-group">
+            <label>昵称</label>
+            <input type="text" v-model="editForm.nickname" placeholder="输入昵称">
+          </div>
+          <div class="form-group">
+            <label>性别</label>
+            <select v-model="editForm.gender">
+              <option value="">请选择</option>
+              <option value="male">男</option>
+              <option value="female">女</option>
+              <option value="other">保密</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>生日</label>
+            <input type="date" v-model="editForm.birthday">
+          </div>
+          <div class="form-group">
+            <label>所在地</label>
+            <input type="text" v-model="editForm.location" placeholder="输入所在地">
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button class="btn-secondary" @click="showEditProfile = false">取消</button>
+          <button class="btn-primary" @click="handleSaveProfile">保存</button>
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -206,9 +304,32 @@ const avatarUrl = ref('');
 
 const showPasswordModal = ref(false);
 const showSettings = ref(false);
+const showEditProfile = ref(false);
 const isChangingPassword = ref(false);
 const passwordError = ref('');
 const passwordSuccess = ref('');
+const bio = ref('热爱生活，享受每一个主题周的美好时光 ✨');
+const editForm = reactive({
+  nickname: user.value?.name || '',
+  gender: 'other',
+  birthday: '',
+  location: ''
+});
+const userLevel = computed(() => {
+  const days = joinDays.value;
+  if (days >= 365) return 5;
+  if (days >= 180) return 4;
+  if (days >= 90) return 3;
+  if (days >= 30) return 2;
+  return 1;
+});
+const joinDays = computed(() => {
+  const registerDate = new Date('2024-01-15');
+  const now = new Date();
+  const diffTime = Math.abs(now - registerDate);
+  const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+  return diffDays;
+});
 
 const passwordForm = reactive({
   oldPassword: '',
@@ -310,6 +431,15 @@ const handleChangePassword = () => {
   } finally {
     isChangingPassword.value = false;
   }
+};
+
+const saveBio = () => {
+  localStorage.setItem('user_bio', bio.value);
+};
+
+const handleSaveProfile = () => {
+  localStorage.setItem('user_profile', JSON.stringify(editForm));
+  showEditProfile.value = false;
 };
 
 const handleLogout = () => {
@@ -426,6 +556,184 @@ const handleLogout = () => {
   color: #666;
   font-size: 0.9rem;
   margin: 0;
+}
+
+.user-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  background: linear-gradient(135deg, #fff3e0, #ffe0b2);
+  padding: 0.35rem 0.85rem;
+  border-radius: 20px;
+  margin-top: 0.75rem;
+}
+
+.badge-icon {
+  font-size: 0.9rem;
+}
+
+.badge-text {
+  font-size: 0.8rem;
+  color: #f57c00;
+  font-weight: 600;
+}
+
+.user-stats-mini {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  padding: 1rem 0;
+  width: 100%;
+  margin-top: 1rem;
+  border-top: 1px solid #f0f0f0;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.mini-stat {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.mini-stat-value {
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: #333;
+}
+
+.mini-stat-label {
+  font-size: 0.7rem;
+  color: #999;
+}
+
+.mini-stat-divider {
+  width: 1px;
+  height: 30px;
+  background: #e0e0e0;
+}
+
+.user-bio {
+  width: 100%;
+  margin-top: 1rem;
+}
+
+.user-bio textarea {
+  width: 100%;
+  padding: 0.75rem;
+  border: 1px solid #e8e8e8;
+  border-radius: 8px;
+  resize: none;
+  font-size: 0.85rem;
+  line-height: 1.5;
+  color: #555;
+  background: #fafbfc;
+  transition: all 0.2s;
+  font-family: inherit;
+}
+
+.user-bio textarea:focus {
+  outline: none;
+  border-color: #4CAF50;
+  background: white;
+  box-shadow: 0 0 0 3px rgba(76, 175, 80, 0.08);
+}
+
+.user-bio textarea::placeholder {
+  color: #bbb;
+}
+
+.quick-menu {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-top: 1rem;
+}
+
+.menu-item {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.7rem 1rem;
+  background: #fafbfc;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  text-decoration: none;
+  color: #333;
+  font-size: 0.9rem;
+  transition: all 0.2s;
+  width: 100%;
+  text-align: left;
+}
+
+.menu-item:hover {
+  background: #f0f0f0;
+  transform: translateX(4px);
+}
+
+.menu-icon {
+  font-size: 1.1rem;
+  width: 24px;
+  text-align: center;
+}
+
+.menu-count {
+  margin-left: auto;
+  font-size: 0.78rem;
+  color: #999;
+  background: #eee;
+  padding: 0.15rem 0.5rem;
+  border-radius: 10px;
+}
+
+.menu-count.new {
+  color: #ff5722;
+  background: #fff3e0;
+}
+
+.edit-profile-btn {
+  background: linear-gradient(135deg, #e8f5e9, #c8e6c9);
+  color: #2e7d32;
+  font-weight: 500;
+}
+
+.edit-profile-btn:hover {
+  background: linear-gradient(135deg, #c8e6c9, #a5d6a7);
+}
+
+.account-status {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+  margin-top: 1.25rem;
+  padding-top: 1rem;
+  border-top: 1px solid #f0f0f0;
+  width: 100%;
+}
+
+.status-item {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.78rem;
+  color: #888;
+}
+
+.status-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+}
+
+.status-dot.verified {
+  background: #4CAF50;
+}
+
+.status-dot.secure {
+  background: #2196F3;
 }
 
 .profile-main {
@@ -773,6 +1081,29 @@ const handleLogout = () => {
   background: #ffebee;
 }
 
+.edit-profile-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.edit-profile-modal .modal-content {
+  background: white;
+  border-radius: 12px;
+  padding: 1.5rem;
+  width: 90%;
+  max-width: 450px;
+  max-height: 80vh;
+  overflow-y: auto;
+}
+
 .password-modal {
   position: fixed;
   top: 0;
@@ -841,6 +1172,23 @@ const handleLogout = () => {
 }
 
 .form-group input:focus {
+  outline: none;
+  border-color: #4CAF50;
+  box-shadow: 0 0 0 2px rgba(76, 175, 80, 0.1);
+}
+
+.form-group select {
+  padding: 0.75rem;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  font-size: 1rem;
+  transition: border-color 0.2s;
+  width: 100%;
+  background: white;
+  cursor: pointer;
+}
+
+.form-group select:focus {
   outline: none;
   border-color: #4CAF50;
   box-shadow: 0 0 0 2px rgba(76, 175, 80, 0.1);
@@ -932,6 +1280,18 @@ const handleLogout = () => {
   
   .data-grid {
     grid-template-columns: 1fr;
+  }
+
+  .user-stats-mini {
+    gap: 0.75rem;
+  }
+
+  .mini-stat-value {
+    font-size: 1rem;
+  }
+
+  .quick-menu {
+    margin-top: 0.75rem;
   }
 }
 </style>

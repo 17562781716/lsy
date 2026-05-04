@@ -28,7 +28,6 @@
               </button>
               <div class="user-dropdown-menu" v-if="userDropdownOpen">
                 <button class="dropdown-item" @click="navigateTo('/profile')">个人中心</button>
-                <button class="dropdown-item" @click="navigateTo('/my-weeks')">我的主题周</button>
                 <button class="dropdown-item logout-btn" @click="logout">退出登录</button>
               </div>
             </div>
