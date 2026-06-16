@@ -1,6 +1,6 @@
 {
-  "buildCommand": "npm run build",
-  "outputDirectory": "dist",
+  "buildCommand": "cd qianduan && npm install && npm run build",
+  "outputDirectory": "qianduan/dist",
   "installCommand": "npm install",
   "framework": null,
   "rewrites": [
