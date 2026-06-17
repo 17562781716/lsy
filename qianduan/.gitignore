@@ -28,3 +28,7 @@ coverage
 *.sw?
 
 *.tsbuildinfo
+
+# Cloudflare Tunnel (local config)
+cloudflare-config.yml
+config.yml
